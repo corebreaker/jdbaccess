@@ -64,6 +64,7 @@
     <!-- runs the example -->
     <target name="example" depends=".example.compile">
         <java classname="${example-class-main}">
+            <sysproperty key="rowset.provider.classname" value="com.sun.rowset.providers.RIXMLProvider"/>
             <classpath>
                 <fileset dir="${example-lib-dir}">
                     <include name="**/*.jar"/>

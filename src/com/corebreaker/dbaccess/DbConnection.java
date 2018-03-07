@@ -554,7 +554,7 @@ public class DbConnection implements IConnection
    private static CachedRowSet createCachedRowset() throws SQLException
    {
       if( sRowsetFactory == null )
-         sRowsetFactory = RowSetProvider.newFactory("com.sun.legacy.rowset.RowSetFactoryImpl", null);
+         sRowsetFactory = RowSetProvider.newFactory("com.corebreaker.dbaccess.rowset.RowSetFactory", null);
 
       return sRowsetFactory.createCachedRowSet();
    }
