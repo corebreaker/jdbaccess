@@ -41,15 +41,6 @@
                debuglevel="lines,vars,source">
             <compilerarg value="-Xlint:-deprecation"/>
         </javac>
-        <javac srcdir="${lib-dir}"
-               destdir="${pkg-class-dir}"
-               includeantruntime="false"
-               nowarn="on"
-               debug="on"
-               debuglevel="lines,vars,source"/>
-        <copy todir="${pkg-class-dir}">
-            <fileset dir="${ressources-dir}"/>
-        </copy>
     </target>
 
     <!-- creates directories for the example -->

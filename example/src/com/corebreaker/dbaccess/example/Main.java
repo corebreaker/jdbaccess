@@ -20,6 +20,7 @@ public class Main
 
     public static void main(final String[] aArgs) throws Throwable
     {
+        System.out.println(System.getProperty("javax.sql.rowset.RowSetFactory"));
         Class.forName ("com.mysql.jdbc.Driver");
         // Init database connection
         final DbAccess db = new DbAccess(DB_URL).debug(true);
