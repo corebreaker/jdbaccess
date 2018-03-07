@@ -136,6 +136,6 @@ data/*.db
 config/drivers.yaml
 HOWTO.txt
 dist/
-
+.build/
 *.db
 
