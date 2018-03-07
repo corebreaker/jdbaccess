@@ -1582,7 +1582,12 @@ public class DbConnection implements IConnection
          for(final ParamDesc fDesc : lValues.values())
          {
             boolean wIsValue= true;
-            final int wIndex= lDesc.mValue.get(fDesc.mIdentifier).mIndex;
+            ParamDesc wDesc = lDesc.mValue.get(fDesc.mIdentifier);
+
+            if( wDesc == null )
+               continue;
+
+            final int wIndex= wDesc.mIndex;
             Object wValue= fDesc.mValue.mValue;
 
             try

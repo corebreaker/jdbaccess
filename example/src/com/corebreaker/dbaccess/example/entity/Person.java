@@ -5,6 +5,8 @@ import com.corebreaker.dbaccess.NEntity;
 import com.corebreaker.dbaccess.NField;
 import com.corebreaker.dbaccess.example.model.IPerson;
 
+import java.util.Date;
+
 /**
  * @author Frédéric Meyer
  * @version 1.0
@@ -18,24 +20,29 @@ public class Person extends DbObject implements IPerson
     @NField("name") // Field name
     private String mName = null;
 
+    @NField("birth") // Field name
+    private Date mBirth = null;
+
     public Person()
     {
         super();
     }
 
-    public Person(final String aName)
+    public Person(final String aName, final Date aBirth)
     {
         super();
 
         mName = aName;
+        mBirth = aBirth;
     }
 
-    public Person(final String aName, final IPerson aManager)
+    public Person(final String aName, final Date aBirth, final IPerson aManager)
     {
         super();
 
         mName= aName;
         mManager = aManager;
+        mBirth = aBirth;
     }
 
 
@@ -73,5 +80,23 @@ public class Person extends DbObject implements IPerson
     public void setManager(final IPerson aPerson)
     {
         mManager = aPerson;
+    }
+
+    /**
+     * @return the bithdate of this person
+     */
+    @Override
+    public Date getBirth()
+    {
+        return mBirth;
+    }
+
+    /**
+     * @param aBirth the bithdate of this person
+     */
+    @Override
+    public void setBirth(final Date aBirth)
+    {
+        mBirth = aBirth;
     }
 }

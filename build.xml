@@ -1,10 +1,10 @@
-<?xml version="1.0"?>
+<?xml version=“1.0” encoding=“utf-8”?>
 <project name="DbAccess" default="dist" basedir=".">
-	<property name="dist-dir" location="dist"/>
+    <property name="dist-dir" location="dist"/>
     <property name="dist-package" location="${dist-dir}/dbaccess.jar"/>
 
     <property name="pkg-src-dir" location="src"/>
-	<property name="pkg-class-dir" location=".build/pkg"/>
+    <property name="pkg-class-dir" location=".build/pkg"/>
 
     <property name="ressources-dir" location="res"/>
 

@@ -80,7 +80,7 @@ public interface IConnection
    void save(IObject... aDatas) throws DbException;
 
    /**
-    * @param aData
+    * @param aDatas
     * @throws DbException
     */
    void save(Collection<? extends IObject> aDatas) throws DbException;
