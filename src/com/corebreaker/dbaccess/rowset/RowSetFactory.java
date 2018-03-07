@@ -1,5 +1,7 @@
 package com.corebreaker.dbaccess.rowset;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import javax.sql.rowset.*;
 import java.sql.SQLException;
 
@@ -44,14 +46,7 @@ public class RowSetFactory implements javax.sql.rowset.RowSetFactory
      */
     @Override
     public CachedRowSet createCachedRowSet() throws SQLException {
-        try
-        {
-            return sCachedClass.newInstance();
-        }
-        catch (InstantiationException | IllegalAccessException e)
-        {
-            throw new SQLException(e);
-        }
+        return new CachedRowSetImpl();
     }
 
     /**
@@ -64,14 +59,7 @@ public class RowSetFactory implements javax.sql.rowset.RowSetFactory
      */
     @Override
     public FilteredRowSet createFilteredRowSet() throws SQLException {
-        try
-        {
-            return sFilteredClass.newInstance();
-        }
-        catch (InstantiationException | IllegalAccessException e)
-        {
-            throw new SQLException(e);
-        }
+        throw new NotImplementedException();
     }
 
     /**
@@ -84,14 +72,7 @@ public class RowSetFactory implements javax.sql.rowset.RowSetFactory
      */
     @Override
     public JdbcRowSet createJdbcRowSet() throws SQLException {
-        try
-        {
-            return sJdbcClass.newInstance();
-        }
-        catch (InstantiationException | IllegalAccessException e)
-        {
-            throw new SQLException(e);
-        }
+        throw new NotImplementedException();
     }
 
     /**
@@ -104,14 +85,7 @@ public class RowSetFactory implements javax.sql.rowset.RowSetFactory
      */
     @Override
     public JoinRowSet createJoinRowSet() throws SQLException {
-        try
-        {
-            return sJoinClass.newInstance();
-        }
-        catch (InstantiationException | IllegalAccessException e)
-        {
-            throw new SQLException(e);
-        }
+        throw new NotImplementedException();
     }
 
     /**
@@ -124,13 +98,6 @@ public class RowSetFactory implements javax.sql.rowset.RowSetFactory
      */
     @Override
     public WebRowSet createWebRowSet() throws SQLException {
-        try
-        {
-            return sWebClass.newInstance();
-        }
-        catch (InstantiationException | IllegalAccessException e)
-        {
-            throw new SQLException(e);
-        }
+        throw new NotImplementedException();
     }
 }
