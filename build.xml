@@ -6,7 +6,6 @@
     <property name="pkg-src-dir" location="src"/>
 	<property name="pkg-class-dir" location=".build/pkg"/>
 
-    <property name="lib-dir" location="lib"/>
     <property name="ressources-dir" location="res"/>
 
     <property name="example-src-dir" location="example/src"/>
@@ -39,8 +38,13 @@
                includeantruntime="false"
                debug="on"
                debuglevel="lines,vars,source">
-            <compilerarg value="-Xlint:-deprecation"/>
+
+            <!-- until the removing of these warnings -->
+            <compilerarg value="-Xlint:-deprecation,-unchecked"/>
         </javac>
+        <copy todir="${pkg-class-dir}">
+            <fileset dir="${ressources-dir}"/>
+        </copy>
     </target>
 
     <!-- creates directories for the example -->
@@ -64,7 +68,6 @@
     <!-- runs the example -->
     <target name="example" depends=".example.compile">
         <java classname="${example-class-main}">
-            <sysproperty key="rowset.provider.classname" value="com.sun.rowset.providers.RIXMLProvider"/>
             <classpath>
                 <fileset dir="${example-lib-dir}">
                     <include name="**/*.jar"/>

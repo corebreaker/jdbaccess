@@ -1283,6 +1283,7 @@ public class SyncResolverImpl extends CachedRowSetImpl implements SyncResolver {
      *            the cursor is not on a valid row, or this method fails
      * @deprecated
      */
+    @Deprecated
     public BigDecimal getBigDecimal(int columnIndex, int scale) throws SQLException {
        throw new UnsupportedOperationException();
     }
@@ -1419,6 +1420,7 @@ public class SyncResolverImpl extends CachedRowSetImpl implements SyncResolver {
      * @throws SQLException if an error occurs
      * @deprecated
      */
+    @Deprecated
     public java.io.InputStream getUnicodeStream(int columnIndex) throws SQLException {
        throw new UnsupportedOperationException();
     }
@@ -1648,6 +1650,7 @@ public class SyncResolverImpl extends CachedRowSetImpl implements SyncResolver {
      * @deprecated Use the <code>getBigDecimal(String columnName)</code>
      *             method instead
      */
+    @Deprecated
     public BigDecimal getBigDecimal(String columnName, int scale) throws SQLException {
         throw new UnsupportedOperationException();
     }
@@ -1779,6 +1782,7 @@ public class SyncResolverImpl extends CachedRowSetImpl implements SyncResolver {
      *            this rowset's rows or its insert row
      * @deprecated use the method <code>getCharacterStream</code> instead
      */
+    @Deprecated
     public java.io.InputStream getUnicodeStream(String columnName) throws SQLException {
         throw new UnsupportedOperationException();
     }
