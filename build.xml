@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<project name="DbAccess" default="dist" basedir=".">
+	<property name="dist-dir" location="dist"/>
+    <property name="dist-package" location="${dist-dir}/dbaccess.jar"/>
+
+    <property name="pkg-src-dir" location="src"/>
+	<property name="pkg-class-dir" location=".build/pkg"/>
+
+    <property name="lib-dir" location="lib"/>
+    <property name="ressources-dir" location="res"/>
+
+    <property name="example-src-dir" location="example/src"/>
+    <property name="example-class-dir" location=".build/example"/>
+    <property name="example-lib-dir" location="example/lib"/>
+    <property name="example-class-main" value="com.corebreaker.dbaccess.example.Main"/>
+
+    <target name="clean">
+        <delete dir=".build"/>
+    </target>
+
+    <!-- creates directories for the package -->
+    <target name=".compile.dest">
+        <mkdir dir="${pkg-class-dir}"/>
+    </target>
+
+    <target name=".package.dest">
+        <mkdir dir="${dist-dir}"/>
+    </target>
+
+    <!-- makes the package (makes JAR) -->
+    <target name="dist" depends="compile, .package.dest">
+        <jar destfile="${dist-package}" basedir="${pkg-class-dir}"/>
+    </target>
+
+    <!-- compiles the package -->
+    <target name="compile" depends=".compile.dest">
+        <javac srcdir="${pkg-src-dir}"
+               destdir="${pkg-class-dir}"
+               includeantruntime="false"
+               debug="on"
+               debuglevel="lines,vars,source">
+            <compilerarg value="-Xlint:-deprecation"/>
+        </javac>
+        <javac srcdir="${lib-dir}"
+               destdir="${pkg-class-dir}"
+               includeantruntime="false"
+               nowarn="on"
+               debug="on"
+               debuglevel="lines,vars,source"/>
+        <copy todir="${pkg-class-dir}">
+            <fileset dir="${ressources-dir}"/>
+        </copy>
+    </target>
+
+    <!-- creates directories for the example -->
+    <target name=".example.dest">
+        <mkdir dir="${example-class-dir}"/>
+    </target>
+
+    <!-- compiles the example -->
+    <target name=".example.compile" depends="compile, .example.dest">
+        <javac srcdir="${example-src-dir}"
+               destdir="${example-class-dir}"
+               includeantruntime="false"
+               debug="on"
+               debuglevel="lines,vars,source">
+            <classpath>
+                <pathelement path="${pkg-class-dir}"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <!-- runs the example -->
+    <target name="example" depends=".example.compile">
+        <java classname="${example-class-main}">
+            <classpath>
+                <fileset dir="${example-lib-dir}">
+                    <include name="**/*.jar"/>
+                </fileset>
+                <pathelement path="${example-class-dir}"/>
+
+                <!-- mandatory class path for an application which uses DBAccess package -->
+                <pathelement path="${pkg-class-dir}"/>
+            </classpath>
+        </java>
+    </target>
+</project>
