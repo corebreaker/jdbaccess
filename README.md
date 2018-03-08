@@ -2,6 +2,7 @@
 
 Little ORM for Java
 
+
 # Informations
 
 This project use **Apache Ant** as builder.
@@ -28,6 +29,14 @@ Then, to execute the example, do this:
 ```shell
 ant example
 ```
+
+
+# Features
+
+- Object Mapping
+- Foreign Keys
+- Transactions
+
 
 # Commands
 
